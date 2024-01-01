@@ -1,0 +1,27 @@
+///100 Days of RTL///
+
+///Abilash P///
+
+///4 bit Johnson Counter (Synchronous Reset)///
+
+module counter (CLK, RST, out);
+  input  CLK, RST;
+  output reg [3:0]out;
+  integer i;
+  
+  always @ (posedge CLK)
+    begin
+      if(RST)
+            out<=4'b0000;
+      else
+        begin
+          out[3] <= ~out[0];      
+          for(i=0; i<3; i=i+1)    
+            begin
+              out[i] <= out[i+1];
+            end
+        end
+    end
+endmodule
+        
+        
